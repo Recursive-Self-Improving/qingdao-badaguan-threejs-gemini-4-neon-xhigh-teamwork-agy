@@ -1,0 +1,268 @@
+:root {
+  --hud-bg: rgba(16, 24, 34, 0.72);
+  --hud-bg-hover: rgba(28, 42, 58, 0.86);
+  --hud-bg-active: rgba(188, 122, 62, 0.88);
+  --hud-border: rgba(245, 236, 218, 0.24);
+  --hud-border-active: rgba(255, 224, 178, 0.72);
+  --hud-text: #f6f1e7;
+  --hud-muted: rgba(235, 228, 214, 0.78);
+  --hud-accent: #f1c47a;
+  --hud-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+}
+
+.badaguan-hud-card {
+  pointer-events: auto;
+  background: var(--hud-bg);
+  color: var(--hud-text);
+  border: 1px solid var(--hud-border);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 20px rgba(6, 12, 20, 0.34);
+  font-family: var(--hud-font);
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.badaguan-location-badge {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  max-width: 310px;
+  padding: 8px 12px;
+  line-height: 1.28;
+}
+
+.badaguan-brand-kicker {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--hud-accent);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.badaguan-zone-zh {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--hud-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badaguan-zone-en {
+  font-size: 11px;
+  color: var(--hud-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badaguan-controls-toggle {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  height: 32px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+.badaguan-controls-toggle:hover,
+.badaguan-controls-toggle[aria-expanded="true"] {
+  background: var(--hud-bg-hover);
+  border-color: var(--hud-border-active);
+}
+
+.badaguan-controls-panel {
+  position: fixed;
+  top: 52px;
+  right: 12px;
+  width: 300px;
+  max-width: calc(100vw - 24px);
+  padding: 12px 14px;
+  z-index: 20;
+}
+
+.badaguan-controls-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--hud-accent);
+  margin: 0 0 8px 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(245, 236, 218, 0.16);
+}
+
+.badaguan-controls-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.badaguan-controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 11.5px;
+  line-height: 1.35;
+}
+
+.badaguan-controls-keys {
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--hud-text);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 5px;
+  padding: 1px 6px;
+  font-size: 11px;
+}
+
+.badaguan-controls-desc {
+  text-align: right;
+  color: var(--hud-muted);
+}
+
+.badaguan-preset-bar {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 6px;
+  padding: 5px 7px;
+  max-width: calc(100vw - 24px);
+}
+
+.badaguan-preset-btn {
+  appearance: none;
+  border: 1px solid rgba(245, 236, 218, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--hud-text);
+  border-radius: 7px;
+  height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  font-family: var(--hud-font);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+.badaguan-preset-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--hud-border-active);
+}
+
+.badaguan-preset-btn.is-active {
+  background: var(--hud-bg-active);
+  border-color: var(--hud-border-active);
+  color: #fffaf2;
+  font-weight: 600;
+}
+
+.badaguan-preset-num {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--hud-accent);
+}
+
+.badaguan-preset-btn.is-active .badaguan-preset-num {
+  color: #fff6e6;
+}
+
+.badaguan-loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: radial-gradient(circle at 50% 42%, #243447 0%, #141d29 100%);
+  color: var(--hud-text);
+  font-family: var(--hud-font);
+  text-align: center;
+  padding: 24px;
+}
+
+.badaguan-loading-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.badaguan-loading-sub {
+  font-size: 13px;
+  color: var(--hud-muted);
+}
+
+.badaguan-webgl-fallback {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #17202b;
+  color: var(--hud-text);
+  font-family: var(--hud-font);
+  text-align: center;
+  padding: 28px;
+}
+
+.badaguan-webgl-fallback h2 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--hud-accent);
+}
+
+.badaguan-webgl-fallback p {
+  margin: 0;
+  max-width: 480px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--hud-muted);
+}
+
+@media (max-width: 1100px) {
+  .badaguan-location-badge {
+    max-width: 260px;
+    padding: 7px 10px;
+  }
+
+  .badaguan-preset-bar {
+    gap: 4px;
+    padding: 4px 6px;
+  }
+
+  .badaguan-preset-btn {
+    height: 28px;
+    line-height: 26px;
+    padding: 0 8px;
+    font-size: 11.5px;
+  }
+}
